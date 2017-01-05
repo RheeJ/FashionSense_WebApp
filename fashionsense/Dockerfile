@@ -6,6 +6,7 @@ WORKDIR /app
 RUN apt-get upgrade
 RUN apt-get update && apt-get install -y cmake
 
+#---------------------------OPENCV BUILD--------------------------------
 RUN apt-get install -y wget
 
 RUN apt-get install -y build-essential cmake git pkg-config \
@@ -46,3 +47,18 @@ RUN cp opencv-3.0.0/build/lib/cv2.so /usr/local/lib/python2.7/dist-packages
 RUN ls /usr/local/lib/python2.7/site-packages
 RUN echo "import cv2 \nprint(cv2.__version__)" >> test.py
 RUN python test.py
+
+#------------------------DJANGO APPLICATION BUILD-------------------------
+RUN apt-get update && apt-get install -y dos2unix 
+RUN pip install Django==1.10.2 \
+	djangorestframework==3.4.7 \
+	gunicorn==19.6.0
+
+ADD . /app/
+ADD start.sh /start.sh
+RUN pip install bs4==0.0.1
+
+#------------------------EXPOSE AND SET UP CONTAINER TO RUN-----------------
+EXPOSE 8080
+RUN dos2unix start.sh
+CMD /bin/bash start.sh
