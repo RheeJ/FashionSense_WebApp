@@ -57,7 +57,9 @@ RUN pip install Django==1.10.2 \
 ADD . /app/
 ADD start.sh /start.sh
 RUN pip install bs4==0.0.1
-
+#------------------------MIGRATE DB-----------------------------------------
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 #------------------------EXPOSE AND SET UP CONTAINER TO RUN-----------------
 EXPOSE 8080
 RUN dos2unix start.sh
