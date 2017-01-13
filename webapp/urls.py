@@ -7,6 +7,6 @@ from rest_framework import routers
 
 urlpatterns = [
     url(r'classification', views.ClassificationView.as_view()),
-    url(r'^', include(router.urls)),
+    # url(r'^', include(router.urls)),
     # url(r'^view', test_view),
 ]
