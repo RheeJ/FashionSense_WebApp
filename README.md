@@ -9,10 +9,10 @@ A webapp that hosts our awesome endpoints
 
 # Usage
 
-* to run with Docker build and run the image
+* to run with Docker build and to run the container
 
     ```
-    $ docker build -t [what you want to call it] .; docker run -p 8080:8080 [what you decided to call it]
+    $ docker build -t [what you want to call it] .; docker run -p 8000:8080 [what you decided to call it]
     ```
 
 * alternatively run it locally just using Django
@@ -24,4 +24,4 @@ A webapp that hosts our awesome endpoints
     ```
     python manage.py runserver.
     ```
-    * now you can access the api by sending a post request to this [endpoint](http://localhost:8000/api/classification)
+* now you can access the api by sending a post request to this endpoint -> [host]/api/classification
