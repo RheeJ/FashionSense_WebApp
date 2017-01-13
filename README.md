@@ -1,11 +1,27 @@
-# FashionSense_WebApp
-Oh and Docker needs to be installed.
-To run locally, cd into fashionsense then run:
-"docker build -t [what you want to call it] ."
-and
-"docker run -p 8080:8080 [what you decided to call it]"
+# FashionSense WebApp
+
+## Description
+A webapp that hosts our awesome endpoints
 
 
-You can also run django app on localhost:8000 by cd'ing into folder with manage.py and running "python manage.py runserver."
-But before that you will want to make sure your local database is updated by running "python manage.py makemigrations" and then "python manage.py migrate" To access python shell of your webapp, you can run "python manage.py shell"
+# Install
+* install Docker
 
+# Usage
+
+* to run with Docker build and run the image
+
+    ```
+    $ docker build -t [what you want to call it] .; docker run -p 8080:8080 [what you decided to call it]
+    ```
+
+* alternatively run it locally just using Django
+    * first setup migrations
+    ```
+    $ python manage.py migrate
+    ```
+    * now to start the app on localhost:8000 run
+    ```
+    python manage.py runserver.
+    ```
+    * now you can access the api by sending a post request to this [endpoint](http://localhost:8000/api/classification)
