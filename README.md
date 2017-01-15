@@ -5,7 +5,8 @@ A webapp that hosts our awesome endpoints
 
 
 # Install
-* install Docker
+* [install Docker](https://docs.docker.com/engine/installation/)
+* [install Docker Compose](https://docs.docker.com/compose/install/)
 
 # Usage
 * to run with Docker Compose
