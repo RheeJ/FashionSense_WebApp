@@ -25,7 +25,7 @@ A webapp that hosts our awesome endpoints
     ```
     $ python manage.py migrate
     ```
-    * now to start the app on localhost:8000 run
+    * now to start the app on localhost:8080 run
     ```
     $ python manage.py runserver.
     ```
