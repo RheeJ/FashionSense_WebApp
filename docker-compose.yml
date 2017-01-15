@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+    front:
+        build: ./front
+        container_name: front
+        image: front
+        links:
+            - front-ui
+            - aiapi
+        ports:
+            - "80:80"
+    api:
+        build: ./api
+        container_name: api
+        image: api
+        expose:
+            - "8000"
