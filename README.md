@@ -16,7 +16,7 @@ A webapp that hosts our awesome endpoints
     ```
     * to run with Docker Compose
     ```
-    $ docker-compose run up
+    $ docker-compose up
     ```
 
 * alternatively run it locally just using Django
