@@ -6,8 +6,7 @@ services:
         container_name: front
         image: front
         links:
-            - front-ui
-            - aiapi
+            - api
         ports:
             - "80:80"
     api:
@@ -15,4 +14,4 @@ services:
         container_name: api
         image: api
         expose:
-            - "8000"
+            - "8080"
