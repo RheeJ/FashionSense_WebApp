@@ -23,18 +23,13 @@ class ClassificationView(APIView):
 
     def post(self, request, format=None):
 
-        meta = request.META
-        if 'Content-Type' not in meta:
-            raise SuspiciousOperation("Invalid request; see documentation for correct paramaters")
+        try:
+            file_obj = request.data['file']
+            # with open('pic.jpg', 'wb+') as f:
+            #     for chunk in file_obj.chunks():
+            #         f.write(chunk)
 
-        content_type = meta['Content-Type'].split('/')
-        if content_type[0] != 'image':
-            raise SuspiciousOperation("Invalid request; see documentation for correct paramaters")
-
-        file_obj = request.data['file']
-        # with open('pic.jpg', 'wb+') as f:
-        #     for chunk in file_obj.chunks():
-        #         f.write(chunk)
-
-        classification = {"classification":"formal"}
-        return Response(classification)
+            classification = {"classification":"formal"}
+            return Response(classification)
+        except:
+            raise SuspiciousOperation("Invalid request")

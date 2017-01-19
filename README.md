@@ -4,11 +4,11 @@
 A webapp that hosts our awesome endpoints
 
 
-# Install
+## Install
 * [install Docker](https://docs.docker.com/engine/installation/)
 * [install Docker Compose](https://docs.docker.com/compose/install/)
 
-# Usage
+## Usage
 * to run with Docker Compose
     * first build everything with Docker Compose
     ```
