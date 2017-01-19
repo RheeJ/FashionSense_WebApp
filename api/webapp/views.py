@@ -10,6 +10,8 @@ from rest_framework.response import Response
 from rest_framework.parsers import FileUploadParser
 from django.core.files.storage import default_storage
 from django.core.exceptions import SuspiciousOperation
+import requests
+import json
 
 
 class ClassificationView(APIView):
@@ -28,8 +30,20 @@ class ClassificationView(APIView):
             # with open('pic.jpg', 'wb+') as f:
             #     for chunk in file_obj.chunks():
             #         f.write(chunk)
-
-            classification = {"classification":"formal"}
-            return Response(classification)
         except:
+            # TODO: implement specific exception handling and logging
+            print "Could not find image file"
             raise SuspiciousOperation("Invalid request")
+
+
+        try:
+            features = { "features" : [0, 1, 0, 1, 6] }
+            #host = "https://jsonplaceholder.typicode.com/"
+            endpoint = "http://ml:5000"# host + "posts"
+            r = requests.post(endpoint, data=features)
+            classification = r.json()
+        except:
+            print "Could not get ml"
+            raise SuspiciousOperation("Invalid request")
+
+        return Response(classification)
