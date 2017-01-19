@@ -57,6 +57,7 @@ RUN pip install Django==1.10.2 \
 ADD . /app/
 ADD start.sh /start.sh
 RUN pip install bs4==0.0.1
+RUN pip install requests
 #------------------------MIGRATE DB-----------------------------------------
 RUN python manage.py makemigrations
 RUN python manage.py migrate
