@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.parsers import FileUploadParser
 from django.core.files.storage import default_storage
+from django.core.exceptions import SuspiciousOperation
 
 
 class ClassificationView(APIView):
@@ -21,6 +22,14 @@ class ClassificationView(APIView):
     parser_classes = (FileUploadParser,)
 
     def post(self, request, format=None):
+
+        meta = request.META
+        if 'Content-Type' not in meta:
+            raise SuspiciousOperation("Invalid request; see documentation for correct paramaters")
+
+        content_type = meta['Content-Type'].split('/')
+        if content_type[0] != 'image':
+            raise SuspiciousOperation("Invalid request; see documentation for correct paramaters")
 
         file_obj = request.data['file']
         # with open('pic.jpg', 'wb+') as f:
