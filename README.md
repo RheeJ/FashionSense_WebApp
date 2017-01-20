@@ -6,17 +6,16 @@ A webapp that hosts our awesome endpoints
 
 ## Install
 * [install Docker](https://docs.docker.com/engine/installation/)
-* [install Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Usage
 * to run with Docker Compose
     * first build everything with Docker Compose
     ```
-    $ docker-compose build
+    $ docker build -t api
     ```
     * to run with Docker Compose
     ```
-    $ docker-compose up
+    $ docker run -p 8080:8080 api .
     ```
 
 * alternatively run it locally just using Django
