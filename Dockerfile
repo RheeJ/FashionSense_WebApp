@@ -3,8 +3,6 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-#VOLUME ./
-
 RUN apt-get upgrade
 RUN apt-get update && apt-get install -y cmake
 
@@ -23,4 +21,4 @@ RUN python manage.py migrate
 
 EXPOSE 8080
 RUN dos2unix start.sh
-CMD /bin/bash start.sh
+CMD ["/start.sh"]

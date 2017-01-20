@@ -40,7 +40,8 @@ class ClassificationView(APIView):
             features = { "features" : [0, 1, 0, 1, 6] }
             #host = "https://jsonplaceholder.typicode.com/"
             endpoint = "http://ml:5000"# host + "posts"
-            r = requests.post(endpoint, data=features)
+            headers = {"Content-Type":"application/json"}
+            r = requests.post(endpoint, json=features, headers=headers)
             classification = r.json()
         except:
             print "Could not get ml"
