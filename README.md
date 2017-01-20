@@ -1,19 +1,19 @@
 # FashionSense WebApp
 
 ## Description
-A webapp that hosts our awesome endpoints
+A webapp that hosts our awesome endpoints.
 
 
 ## Install
 * [install Docker](https://docs.docker.com/engine/installation/)
 
 ## Usage
-* to run with Docker Compose
-    * first build everything with Docker Compose
+* to run with Docker
+    * first build everything with Docker
     ```
     $ docker build -t api
     ```
-    * to run with Docker Compose
+    * to run with Docker
     ```
     $ docker run -p 8080:8080 api .
     ```
