@@ -1,3 +1,4 @@
+import os,binascii
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from django.http import HttpResponse
@@ -25,26 +26,18 @@ class ClassificationView(APIView):
 
     def post(self, request, format=None):
 
-        try:
-            file_obj = request.data['file']
-            # with open('pic.jpg', 'wb+') as f:
-            #     for chunk in file_obj.chunks():
-            #         f.write(chunk)
-        except:
-            # TODO: implement specific exception handling and logging
-            print "Could not find image file"
-            raise SuspiciousOperation("Invalid request")
+        file_obj = request.data['file']
 
+        print "saving image"
+        filename = binascii.b2a_hex(os.urandom(15)) + '.jpg'
+        with open("/tmp/" + filename, 'wb+') as f:
+            for chunk in file_obj.chunks():
+                f.write(chunk)
 
-        try:
-            features = { "features" : [0, 1, 0, 1, 6] }
-            #host = "https://jsonplaceholder.typicode.com/"
-            endpoint = "http://ml:5000"# host + "posts"
-            headers = {"Content-Type":"application/json"}
-            r = requests.post(endpoint, json=features, headers=headers)
-            classification = r.json()
-        except:
-            print "Could not get ml"
-            raise SuspiciousOperation("Invalid request")
+        filepath = { "features" : "/tmp/" + filename }
+        endpoint = "http://ml:5000"
+        headers = {"Content-Type":"application/json"}
+        r = requests.post(endpoint, json=filepath, headers=headers)
+        classification = r.json()
 
         return Response(classification)
