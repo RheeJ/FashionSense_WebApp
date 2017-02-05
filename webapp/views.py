@@ -34,10 +34,12 @@ class ClassificationView(APIView):
             for chunk in file_obj.chunks():
                 f.write(chunk)
 
-        filepath = { "features" : "/tmp/" + filename }
+        filepath = { "file_path" : "/tmp/" + filename }
         endpoint = "http://ml:5000"
         headers = {"Content-Type":"application/json"}
         r = requests.post(endpoint, json=filepath, headers=headers)
         classification = r.json()
+
+        os.remove("/tmp/" + filename)
 
         return Response(classification)
