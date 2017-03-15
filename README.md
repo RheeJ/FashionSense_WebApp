@@ -26,5 +26,5 @@ A webapp that hosts our awesome endpoints.
     ```
     * now to start the app on localhost:8080 run
     ```
-    $ python manage.py runserver.
+    $ python manage.py runserver
     ```
