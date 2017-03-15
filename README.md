@@ -28,4 +28,3 @@ A webapp that hosts our awesome endpoints.
     ```
     $ python manage.py runserver.
     ```
-* now you can access the api by sending a post request to this endpoint -> [host]/api/classification (if you're on Mac Docker doesn't bind to localhost I think...)
