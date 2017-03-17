@@ -3,5 +3,5 @@ from django.template import loader
 
 def index(request):
     template = loader.get_template('app/index.html')
-    #context = RequestContext(request, {})
+    # host, port = request.get_host().split(':')
     return HttpResponse(template.render())
