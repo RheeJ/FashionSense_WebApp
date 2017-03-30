@@ -8,6 +8,10 @@ if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')
 }
 
+$(document).ready(function(){
+  $('.parallax').parallax();
+});
+
 +function ($) {
   'use strict';
   var version = $.fn.jquery.split(' ')[0].split('.')
